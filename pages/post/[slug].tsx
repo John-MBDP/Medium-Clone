@@ -18,6 +18,7 @@ interface Props {
 }
 
 function Post({ post }: Props) {
+  console.log(post)
   const [submitted, setSubmitted] = useState(false)
   const {
     register,
@@ -92,7 +93,7 @@ function Post({ post }: Props) {
       </article>
       <hr className="my-5 mx-auto max-w-lg border border-yellow-500" />
       {submitted ? (
-        <div className="my-10 mx-auto flex max-w-2xl flex-col bg-yellow-500 py-10 text-white">
+        <div className="my-10 mx-auto flex max-w-2xl flex-col bg-yellow-500 p-10 text-white">
           <h3 className="text-3xl font-bold">
             Thank you for submitting your comment!
           </h3>
@@ -163,6 +164,19 @@ function Post({ post }: Props) {
           />
         </form>
       )}
+      {/* Comments */}
+      <div className="mx-auto my-10 flex max-w-2xl flex-col space-y-2 p-10 shadow shadow-yellow-500">
+        <h3 className="text-4xl">Comments</h3>
+        <hr className="pb-2" />
+        {post.comments.map((comment) => (
+          <div key={comment._id}>
+            <p>
+              <span className="text-yellow-500">{comment.name}: </span>
+              {comment.comment}
+            </p>
+          </div>
+        ))}
+      </div>
     </main>
   )
 }
