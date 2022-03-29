@@ -32,6 +32,7 @@ function Post({ post }: Props) {
     })
       .then(() => {
         console.log(data)
+        setSubmitted(true)
       })
       .catch((err) => {
         console.log(err)
